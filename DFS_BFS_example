@@ -1,0 +1,75 @@
+#BFS
+
+from collections import deque
+#1,1시작 해서 n,m에 도착
+def bfs(x,y):
+    queue = deque()
+    queue.append((x,y))#왜 튜플 형태로 넣어주지? 암트 ㄴ그냥 하자
+
+    while queue:
+        x,y = queue.popleft()
+
+        for i in range(4):#4방향 #아하 길이 만약 상하좌우중 상 이랑 좌만 뚫려있으면 상 돌려서 queue에 append하고 안끝내고 계속 for문 돌려줌. 그러고 하 넘어가고 좌에서 또 queue 에 append
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if nx<0 or nx >=5 or ny<0 or ny>=6:#범위를 벗어나는 경우 무시함
+                continue
+            if graph[nx][ny] == 0:
+                continue#괴물일 경우 안지나감 그냥 그 값은 무시함
+            if graph[nx][ny] == 1:# else가 아니라 굳이 1로 처리한게 한번 방문했으면 2나 3 이나 이런 숫자들이 찍혀있을거니까
+                graph[nx][ny] += graph[x][y] +1
+                queue.append((nx,ny))
+
+    return graph[4][5]#목적
+
+graph = [
+    [1,0,1,0,1,0],
+    [1,1,1,1,1,1],
+    [0,0,0,0,0,1],
+    [1,1,1,1,1,1],
+    [1,1,1,1,1,1],
+]
+#이동할 네 방향 설정
+dx = [-1,1,0,0]#북남서동
+dy = [0,0,-1,1]
+print(bfs(0,0))
+
+
+
+
+
+
+
+
+
+
+'''
+#DFS
+
+
+graph = [
+    [0,0,1,1,0],
+    [0,0,0,1,1],
+    [1,1,1,1,1],
+    [0,0,0,0,0]
+       ]
+def dfs(x,y):
+    if x<= -1 or x>=4 or y<=-1 or y>=5:
+        return False
+    if graph[x][y] == 0:
+        graph[x][y] = 1 #방문처리
+        dfs(x+1,y)#첫 점이 상하좌우로 퍼져나가면서 0-->1로 바꿔줌. 그러고 나서 true 반환
+        dfs(x-1,y)
+        dfs(x,y+1)
+        dfs(x,y-1)
+        return True
+    return False#나머지는 애초에 1이 되어서 false로 반환됨
+
+result = 0
+for i in range(4):
+    for j in range(5):
+        if dfs(i,j) == True:
+            result += 1
+
+print(result)
+'''
