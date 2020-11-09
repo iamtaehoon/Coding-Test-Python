@@ -50,3 +50,32 @@ def quick_sort(array_quick, start, end):#start,end 에 인덱스 입력
 
 quick_sort(array_quick, 0, len(array_quick) - 1)
 print(array_quick)
+
+
+
+
+
+
+
+
+#퀵정렬 in Python
+array_quick2 = [5, 7, 9, 0, 3, 1, 6, 2, 4, 8]
+
+def quick_sort2(array):
+    if len(array) <= 1:
+        return array
+    pivot = array[0]
+    tail = array[1:]
+
+    left_side = [x for x in tail if x <= pivot]
+    right_side = [x for x in tail if x > pivot]
+
+    return quick_sort2(left_side) + [pivot] + quick_sort2(right_side)
+
+
+print(quick_sort2(array_quick2))
+
+
+
+
+
