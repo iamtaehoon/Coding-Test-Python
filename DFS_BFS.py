@@ -1,3 +1,5 @@
+#11.16 1차 복습. 머리속에 어떻게 구현되는지 확실히 그림은 그려지는데, 아직 코딩하는게 막힘.
+
 from collections import deque
 
 def bfs(graph,start,visited):#bfs는 while을 사용해서 빌때까지 반복하기. 1 붙어있는 2 3 8, 2처리하면 3 8 + [(1애는 visited), 7]#2에 부ㅡㅌ어있던 애들
