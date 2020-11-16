@@ -1,3 +1,6 @@
+#11.16 1차 복습. 문제 없이 성공!
+# 다만 아쉬운 점은 입력될 때부터 정렬되게 할 수는 없을까?
+
 from collections import deque
 
 
