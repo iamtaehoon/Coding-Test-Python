@@ -22,7 +22,7 @@ while queue:
     if (num % 3 == 0):
         queue.append((num/3,cnt+1))
     if (num % 2 == 0):
-        queue.append((num/3,cnt+1))
+        queue.append((num/2,cnt+1))
     queue.append((num-1,cnt+1))
 
 print(cnt)
